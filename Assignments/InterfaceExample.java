@@ -4,38 +4,44 @@ import java.util.Scanner;
 
 interface Printable     // interface 
 {
-	public void squre();   // abstract method
+	public void print();   // abstract method
 }
 
 interface Calculate
 {
-	public void cube();
+	public void cal();
 }
 
-class Demo implements Printable // implements from printable interface 
-{
-	 public void squre()
-	 {   
-         Scanner sc = new Scanner(System.in);
-		 
+class Squre implements Printable,Calculate // implements from printable and calculate interface 
+{    int a,s;
+	 public void cal()
+	 {
+		 Scanner sc = new Scanner(System.in);
 		 System.out.println("Enter Number of finding Squre :");
-		 int a= sc.nextInt();
-		 int s= a*a;                      // finding square of number
+		  a= sc.nextInt();
+		  s= a*a;                      
+	 }
+	 public void print()
+	 {   
 		 System.out.println("Squre of "+a+" is "+s);
 	 }
 }
 
-class Demo1 implements Calculate
-{
-	public void cube()
+class Cube implements Printable, Calculate
+{   
+	int a,s;
+	public void cal()
 	{ 
 		 Scanner sc = new Scanner(System.in);
 		 
 		 System.out.println("Enter Number of finding Cube :");
-		 int a= sc.nextInt();
+		 a= sc.nextInt();
 		 
-		 int s= a*a*a;
-		 System.out.println("Cube of "+a+" is "+s);
+		 s= a*a*a;
+	}
+	public void print()
+	{
+		System.out.println("Cube of "+a+" is "+s);
 	}
 }
 
@@ -43,22 +49,25 @@ public class InterfaceExample
 {
    public static void main(String[] args)
    {
-	   Demo d= new Demo();
-	   d.squre();
+	   Squre d= new Squre();
+	   d.cal();
+	   d.print();
 	   
-	   Demo1 d1= new Demo1();
-	   d1.cube();
+	   Cube c= new Cube();
+	   c.cal();
+	   c.print();
 			   
    }
 }
 
 
 /* output
- Enter Number of finding Squre :
-4
-Squre of 4 is 16
+ 
+Enter Number of finding Squre :
+2
+Squre of 2 is 4
 Enter Number of finding Cube :
-4
-Cube of 4 is 64
+2
+Cube of 2 is 8
 
 */
